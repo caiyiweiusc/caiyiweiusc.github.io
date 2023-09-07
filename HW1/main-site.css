@@ -4,7 +4,7 @@
 
 .subsection-title {
   
-  font-size: 35px;
+  font-size: 100px;
   font-weight:bold;
   color: rgb(23,55,184);
   margin: 40px;
@@ -39,7 +39,7 @@
 /* .ransparent-section */
 .transparent-section {
   background-image: url("../Cutlery.png");
-  background-size: 600px;
+  background-size: 800px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 450px;  
