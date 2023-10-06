@@ -1,0 +1,256 @@
+/* Center the title */
+.center-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ebay-logo {
+  
+  width: 200px; /* Adjust based on your needs */
+}
+
+/* Center and fix the table container position */
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  top: 120px; /* Adjust based on your header height */
+  width: 100%;
+  margin-bottom:50px ;
+
+}
+
+
+
+
+/* Style the search table */
+.search-table {
+  border-collapse: collapse;
+  width: 560px;
+  border: 1px solid;
+  border-radius: 8px;
+  
+}
+
+/* Add borders to table cells */
+.search-table td {
+  border-bottom: 1px solid ;
+  padding: 10px;
+}
+
+/* Remove border for the last row */
+.search-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Style input fields */
+
+#keywords {
+  margin-left: -50px;
+  width: 150px;  
+}
+.title-cell {
+  width: 0px; 
+}
+#price-from {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 70px;
+}
+#price-to {
+  margin-left: 10px;
+  width: 70px;
+}
+#new{
+  margin-left: -140px;
+}
+#return-accepted{
+  margin-left: -10px;
+}
+#free{
+  margin-left: -30px;
+}
+#clear{
+  margin-left: 200px;
+}
+
+
+/* Style checkboxes */
+input[type="checkbox"] {
+  margin: 0 5px;
+}
+
+
+.title-cell{
+  font-weight: bold;
+}
+
+/* Style the Sorted By select box */
+select#sort-by {
+  background-color: white;
+  width: 250px;
+  height:20px;
+  color: black;  /* Change text color */
+  text-align: center; 
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: -85px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+/* Style buttons */
+button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(202, 200, 200);
+  color: black;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+
+button:hover {
+  background-color: rgb(102,173,91);
+  color:rgb(244, 242, 245)
+}
+
+/*total result*/
+#total-results{
+  text-align: center;
+}
+
+hr{
+  border-top: 1px;
+  width: 750px;
+  margin-left: 580px;
+}
+
+
+.search-result {
+  width: 750px;
+  height: 200px;
+  display: flex;
+  border: 1px solid black;
+  margin-left: 580px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  top: 120px; /* Adjust based on your header height */
+  background-color: rgb(244, 242, 245);
+  border-radius: 5px;
+}
+.image-container {
+  margin-right: 30px;
+  margin-left: 50px;
+  border: 3px solid #ccc; 
+}
+
+.info-container {
+  flex: 2;
+  font-size: 12px;
+}
+img {
+  display: block;
+  width: 100px;
+}
+.expandable {
+  transition: all 0.6s ease; 
+}
+.expandable:hover {
+  transform: scale(2.5); 
+}
+
+.product-title {
+  margin-bottom: 30px;
+  font-size: 15px; 
+  font-weight: 600;
+  white-space: nowrap;  
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  max-width: 550px;  
+  font-family: 'Times New Roman', Times, serif 
+}
+
+.product-info {
+  font-size: 15px;  
+  font-family: 'Times New Roman', Times, serif; 
+}
+.italic-text {
+  font-style: italic;
+}
+.price-info {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#show-button-area {
+  width: 200px;  
+  height: 50px; 
+  padding: 20px;
+}
+
+.top-rated-icon{
+  position: relative;
+  padding-left: 6px;
+  margin-bottom: -15px;
+  width: 25px;
+  height: 35px;
+}
+
+.link-icon{
+  position: relative;
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+.search-result {
+  cursor: pointer;  
+  transition: box-shadow 0.1s ease-in-out, transform 0.3s ease-in-out; 
+}
+
+.search-result:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  
+  transform: scale(1.0001);  
+}
+
+.ItemDetals-title{
+  font-size: 40px;
+  margin-left: 850px;
+  margin-bottom: 0px;
+}
+
+.back-button{
+  margin-left: 870px;
+  margin-bottom: 20px;
+}
+.detailed-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.detailed-info-table th, .detailed-info-table td {
+  border: 2px solid #ddd;
+  padding: 3px;
+  text-align: left;
+}
+.detailed-info-table{
+  width: 900px;
+  margin-left: 520px;
+}
+.productImage{
+  width: 300px;
+}
+.attribute-label{
+  font-weight: bold;
+  
+}

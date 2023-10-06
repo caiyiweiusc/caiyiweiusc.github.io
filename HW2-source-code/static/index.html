@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eBay Shopping</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="../static/js/ebayShopping.js"></script>
+
+</head>
+<body>
+    <h1 class="center-title">
+        <a href="https://www.ebay.com" target="_blank">
+          <img src="../static/images/eBayLogo.png" alt="eBay" class="ebay-logo">
+        </a>
+        Shopping
+    </h1>
+      
+    <div class="table-container">
+        <table class="search-table">
+            <tr>
+                <td class="title-cell" style="padding-left: 150px;">Keywords<span style="color: red;">*</span>:</td>
+                <td class="input-cell" style="padding-left: 40px;"><input type="text" id="keywords" name="keywords"></td>
+            </tr>
+            <tr>
+                <td class="title-cell" style="padding-left: 120px;">Price Range:</td>
+                <td class="input-cell-Price"><span style="margin-left: -40px;">From</span> <input type="text" id="price-from" name="price-from"> to <input type="text" id="price-to" name="price-to"></td>
+                
+            </tr>
+            <tr>
+                <td class="title-cell" style="padding-left: 30px;">Condition:</td>
+                <td class="checkbox-cell" style="padding-left: -10px;">
+                    <input type="checkbox" id="new" name="condition" value="1000"><label for="new">New</label>
+                    <input type="checkbox" id="used" name="condition" value="3000"><label for="used">Used</label>
+                    <input type="checkbox" id="very-good" name="condition" value="4000"><label for="very-good">Very Good</label>
+                    <input type="checkbox" id="good" name="condition" value="5000"><label for="good">Good</label>
+                    <input type="checkbox" id="acceptable" name="condition" value="6000"><label for="acceptable">Acceptable</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="title-cell" style="padding-left:200px">Seller:</td>
+                <td><input type="checkbox" id="return-accepted" name="seller" value="Return Accepted"><label for="return-accepted">Return Accepted</label></td>
+            </tr>
+            <tr>
+                <td class="title-cell" style="padding-left:160px">Shipping:</td>
+                <td>
+                    <input type="checkbox" id="free" name="shipping" value="Free"><label for="free">Free</label>
+                    <input type="checkbox" id="expedited" name="shipping" value="Expedited"><label for="expedited">Expedited</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="title-cell" style="padding-left: 120px;">Sort by:</td>
+                <td>
+                    <select id="sort-by" name="sort-by">
+                        <option value="BestMatch">Best Match</option>
+                        <option value="CurrentPriceHighest">Price: highest first</option>
+                        <option value="PricePlusShippingHighest">Price + Shipping: highest first</option>
+                        <option value="PricePlusShippingLowest">Price + Shipping: lowest first</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" id="clear">Clear</button>
+                    <button type="button" id="search">Search</button>
+                </td>
+            </tr>
+        </table>     
+    </div>
+    
+   
+    <div id="results-area">  
+    </div>
+    <div id="show-button-area"> 
+    </div>
+</body>
+</html>
+
