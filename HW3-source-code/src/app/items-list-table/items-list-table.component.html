@@ -1,0 +1,67 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<div *ngIf="isLoadingItemDetails" class="progress mt-3 ml-6">
+  <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" style="width: 50%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="table-paging-container container ml-6">
+  <ng-container *ngIf="isSearched && (items.length === 0 || (items.length === 1 && items[0] === 0)); else tableContent">
+    <app-no-records></app-no-records>
+  </ng-container>
+
+  <ng-template #tableContent>
+    <!-- 检查items数组是否有内容，且不只是一个0元素 -->
+    <ng-container *ngIf="items.length > 1 && items[0] !== 0 && showItemList">
+      <table class="table table-bordered table-hover mt-5">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Shipping</th>
+            <th>Zip</th>
+            <th>Wish List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of getDisplayedItems(); let i = index">
+            <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+            <td>
+              <a [href]="item.imageURL" target="_blank">
+                <img [src]="item.imageURL" alt="{{ item.title }}" class="item-image img-fluid">
+              </a>
+            </td>
+            
+            <td class="item-title">
+              <a href="#" (click)="getItemDetails(item.itemID); $event.preventDefault()" class="text-decoration-none">{{ item.title }}</a>
+            </td> 
+            <td class="item-price">$ {{ item.price }}</td>
+            <td class="item-shipping">{{ item.shippingCost }}</td>
+            <td class="item-zip">{{ item.postalCode }}</td>
+            <td>
+              <div class="wishlist-icon-container" (click)="toggleItemInDatabase(item)">
+                <span class="material-icons wishlist-icon" [class]="isItemInWishlist(item.itemID) ? 'icon-in-wishlist' : 'icon-not-in-wishlist'">
+                  {{ isItemInWishlist(item.itemID) ? 'remove_shopping_cart' : 'add_shopping_cart' }}
+                </span>
+              </div>                                     
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        <div class="pagination d-flex justify-content-center">
+          <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1" class="btn btn-secondary mr-2">« Previous</button>
+          <span *ngIf="currentPage > 1" class="page-num mr-2" (click)="currentPage = currentPage - 1">{{ currentPage - 1 }}</span>
+          <span class="page-num current mr-2">{{ currentPage }}</span>
+          <span *ngIf="currentPage < getTotalPages()" class="page-num mr-2" (click)="currentPage = currentPage + 1">{{ currentPage + 1 }}</span>
+          <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === getTotalPages()" class="btn btn-secondary">Next »</button>
+        </div>
+    </ng-container>
+  </ng-template>
+</div>
+
+<!-- Debug Values -->
+<app-item-detail-table *ngIf="!showItemList && selectedItem" [item]="selectedItem" (backToList)="backToList()"></app-item-detail-table>

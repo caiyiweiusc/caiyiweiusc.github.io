@@ -1,0 +1,16 @@
+.card-columns .card {
+  display: inline-block;
+  width: 100%;
+  margin: 0px;  /* 调整此值以更改图片之间的外间距 */
+  background-color: #FFFFFF; /* 或其他与图片背景相匹配的颜色 */
+}
+
+.item-image {
+  display: block;
+  width: 100%; /* 保持宽度为100% */
+  height: 100%; /* 将高度设置为100% */
+  margin: auto; /* 居中图片 */
+  border: 10px solid black; /* 减少黑色边框的宽度 */
+}
+
+

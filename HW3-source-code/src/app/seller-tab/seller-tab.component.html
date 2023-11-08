@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container mt-5">
+  <table class="table table-borderless">
+      <tbody>
+            <tr class="even-row">
+                <th scope="row">Feedback Score</th>
+                <td [innerHTML]="displayValue('feedbackScore', sellerInfo.feedbackScore)"></td>
+            </tr>
+
+            <tr class="odd-row">
+                <th scope="row">Popularity</th>
+                <td class="progress-container">
+                    <round-progress 
+                        [current]="sellerInfo.positiveFeedbackPercent" 
+                        [max]="100" 
+                        [color]="'#28a745'" 
+                        [background]="'#eaeaea'" 
+                        [radius]="20" 
+                        [stroke]="2"
+                        [duration]="8"></round-progress>
+                    <span class="progress-label">{{ sellerInfo.positiveFeedbackPercent }}</span>
+                </td>
+            </tr>
+
+            <tr class="even-row">
+                <th scope="row">Feedback Rating Star</th>
+                <td [innerHTML]="displayValue('feedbackRatingStar', sellerInfo.feedbackRatingStar)"></td>
+            </tr>
+          
+          <tr class="odd-row">
+              <th scope="row">Top Rated</th>
+              <td [innerHTML]="displayValue('topRatedSeller', sellerInfo.topRatedSeller)"></td>
+          </tr>
+
+          <tr class="even-row">
+            <th scope="row">Store Name</th>
+            <td [innerHTML]="displayValue('storeName', sellerInfo.storeName)"></td>
+          </tr>
+
+          <tr class="odd-row">
+              <th scope="row">Buy Product At</th>
+              <!-- 对于其他非 "true" 字符串，我们仍然可以使用常规双花括号绑定 -->
+              <td><a [href]="sellerInfo.storeURL">Store</a></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+

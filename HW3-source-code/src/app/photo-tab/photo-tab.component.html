@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div *ngIf="images && images.length > 0" class="container mt-5">
+  <div class="card-columns">
+      <div *ngFor="let image of images" class="card">
+          <a [href]="image" target="_blank">
+              <img [src]="image" alt="Item image" class="item-image img-fluid">
+          </a>
+      </div>
+  </div>
+</div>
+

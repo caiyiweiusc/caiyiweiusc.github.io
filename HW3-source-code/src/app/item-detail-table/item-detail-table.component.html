@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+<div *ngIf="showDetails && item" class="mt-5">
+    <div class="col-6 ml-5">
+      <button class="btn custom-back-btn" (click)="backToList.emit()"> < List</button>
+    </div>
+  
+  <div class="row">
+    <div class="col-sm-11">
+      <!-- 使用Bootstrap的nav-tabs组件 -->
+      <ul class="nav nav-tabs justify-content-end" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'product'" (click)="changeTab('product'); $event.preventDefault()">Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'photo'" (click)="changeTab('photo'); $event.preventDefault()">Photos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'shipping'" (click)="changeTab('shipping'); $event.preventDefault()">Shipping</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'seller'" (click)="changeTab('seller'); $event.preventDefault()">Seller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'similar'" (click)="changeTab('similar'); $event.preventDefault()">Similar Products</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+
+    <!-- 添加一个返回按钮返回到商品列表 -->
+    <div class="row">
+      <div class="col-sm-10 offset-md-1">
+        <table *ngIf="activeTab === 'product'" class="table table-borderless mt-5">
+          <tbody>
+            <!-- 添加Product Image链接到表格 -->
+            <tr>
+              <td style="font-weight: bold;">Product Image</td>
+              <td><a [href]="item.images[0]" target="_blank">View Product Images Here</a></td>
+            </tr>
+            <!-- 加入价格、位置和退货政策到表格 -->
+            <tr>
+              <td style="font-weight: bold;">Price</td>
+              <td>{{ item.price }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Location</td>
+              <td>{{ item.location }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;">Return Policy</td>
+              <td>{{ item.returnPolicy }}</td>
+            </tr>
+            <!-- 展示其他商品详情 -->
+            <tr *ngFor="let key of getObjectKeys(item.itemSpecifics)">
+              <td style="font-weight: bold;">{{ key }}</td>
+              <td>{{ item.itemSpecifics[key].join(', ') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+
+  <!-- 图片展示 -->
+  <div *ngIf="activeTab === 'photo'">
+    <photo-tab [images]="item.images"></photo-tab>
+  </div>
+
+  <!-- Shipping 信息展示 -->
+  <div *ngIf="activeTab === 'shipping'">
+    <shipping-tab [shippingInfo]="shippingInfo"></shipping-tab>  <!-- 在这里传递 shippingInfo -->
+  </div>
+
+  <!-- Seller 信息展示 -->
+  <div *ngIf="activeTab === 'seller'">
+    <seller-tab [sellerInfo]="sellerInfo"></seller-tab>
+  </div>
+
+  <!-- 相似商品展示 -->
+  <div *ngIf="activeTab === 'similar'">
+    <app-similar-products-tab [similarItems]="similarItems"></app-similar-products-tab>
+  </div>
+
+</div>
+
+

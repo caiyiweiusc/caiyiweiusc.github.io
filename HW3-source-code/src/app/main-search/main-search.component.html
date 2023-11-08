@@ -1,0 +1,157 @@
+
+<title>Product Search Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+<body class="mt-5">
+    <div class="searchwindow container-sm d-flex flex-column align-items-center">
+        
+        <form class="form-group" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="product-title">Product Search</h1>
+                </div>
+            </div>
+
+            <!-- Keyword Field -->
+            <div class="form-field form-group row"> <!-- 添加 .row 类 -->
+                <label for="keywordfor" class="label-text col-sm-1 col-form-label">Keyword<span class="required-star">*</span></label> <!-- 添加 .col-sm-3 类，为label指定3个网格宽度 -->
+                <div class="col-sm-4"> <!-- 添加 div 包裹 input，并为其指定9个网格宽度 -->
+                    <input type="text" class="form-control keyword-input" placeholder="Enter Product Name (eg. iPhone 8)" formControlName="keyword">
+                    <div *ngIf="!isSearched && searchForm.controls['keyword'].errors?.['required']" class="error-message mt-2">
+                        <i>Please enter a keyword</i>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Category Field -->
+            <div class="form-field form-group row">
+                <label for="category" class="label-text col-sm-1 col-form-label">Category</label>
+                <div class="col-sm-2">
+                    <select class="form-control category-select" id="category" formControlName="category" (change)="updateCategory($event)">
+                    <option value="all">All Categories</option>
+                    <option value="550">Art</option>
+                    <option value="2984">Baby</option>
+                    <option value="267">Books</option>
+                    <option value="11450">Clothing, Shoes & Accessories</option>
+                    <option value="58058">Computers/Tablets & Networking</option>
+                    <option value="26395">Health & Beauty</option>
+                    <option value="11233">Music</option>
+                    <option value="1249">Video Games & Consoles</option>
+                </select>
+            </div>
+        </div>
+        
+
+            <!-- Condition Field -->
+
+            <div class="form-field form-group row">
+                <label for="condition" class="label-text col-sm-1 col-form-label">Condition</label>
+                <div class="col-sm-9 d-flex align-items-center">
+                    <label class="checkbox-label"><input type="checkbox" value="1000" (change)="updateConditions($event)"> New</label>
+                    <label class="checkbox-label"><input type="checkbox" value="3000" (change)="updateConditions($event)"> Used</label>
+                    <label class="checkbox-label"><input type="checkbox" > Unspecified</label>
+                </div>
+            </div>
+
+
+            <!-- Shipping Options Field -->
+            <div class="form-field form-group row">
+                <label for="shipping" class="label-text col-sm-1 col-form-label">Shipping Options</label>
+                <div class="col-sm-9 d-flex align-items-center">
+                    <label class="checkbox-label"><input type="checkbox" name="shipping" class="custom-checkbox" value="local-pickup" 
+                        (change)="updateShippingOption($event, 'local-pickup')"> Local Pickup</label>
+                    <label class="checkbox-label"><input type="checkbox" name="shipping" class="custom-checkbox" value="free-shipping" 
+                        (change)="updateShippingOption($event, 'free-shipping')"> Free Shipping</label>
+                </div>
+            </div>
+            
+
+
+            <!-- Distance Field -->
+            <div class="form-field form-group row">
+                <label for="distance" class="label-text-distance col-sm-2 col-form-label">Distance (Miles)</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control distance-input example-input" placeholder="10 miles" formControlName="distance">
+                </div>
+            </div>
+
+
+            <!-- From Field -->
+            <div class="form-field form-group row">
+                <label for="from" class="label-text col-sm-1 col-form-label">From<span class="required-star">*</span></label>
+                <div class="col-sm-4">
+                    <input type="radio" name="from" value="current-location" checked required (change)="onCurrentLocationSelected()"> 'Current Location'
+                    <br>
+                    <input type="radio" name="from" value="other" (change)="onOtherSelected()"> Other. Please specify zip code:
+
+                    <input type="text" class="form-control zip-input example-input" 
+                        formControlName="zip"
+                        [disabled]="!isZipEnabled"
+                        maxlength="5"
+                        pattern="[0-9]*"
+                        inputmode="numeric"
+                        matInput [matAutocomplete]="auto"
+                        (input)="searchZipCodes($event)">
+                    
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of zipCodeOptions" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    
+                    <div *ngIf="searchForm.controls['zip'].errors?.['pattern']" class="error-message">
+                        <i class="fas fa-exclamation-circle"></i> Please enter a zip code
+                    </div>
+                </div>
+            </div>
+            
+
+            <!--search and clear button-->
+            <div class="form-group row"> 
+                <div class="col-sm-5"> <!-- Placeholder for the alignment -->
+                </div>
+                <div class="col-sm-9">
+                    <button type="submit" [disabled]="!searchForm.valid" class="btn custom-btn search-btn" (click)="onSubmit()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="reset" class="btn custom-btn clear-btn" (click)="clearFormAndSetLocation()">
+                        <i class="fas fa-bars"></i> Clear
+                    </button>                    
+                </div>
+            </div>
+        </form>
+
+       
+    </div>
+    <!-- 使用 activeButton 和 toggleDisplay 来代替 activeTab 和 changeTab -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-2 text-center">
+                <button class="btn btn-block custom-btn"
+                    [class.btn-selected]="activeButton === 'results'"
+                    (click)="toggleDisplay('results')">Results</button>
+            </div>
+            <div class="col-6 col-md-2 text-center">
+                <button class="btn btn-block custom-btn"
+                    [class.btn-selected]="activeButton === 'wishList'"
+                    (click)="toggleDisplay('wishList')">Wish List</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div *ngIf="isLoading" class="progress" style="height: 20px;">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <span class="sr-only">50% Complete</span>
+        </div>
+    </div>
+
+    <!-- 使用 *ngIf 来条件性地显示 wishlist 或者 items-list-table -->
+    <app-wish-list *ngIf="displayWishList" [items]="wishListItems"></app-wish-list>
+    <app-items-list-table *ngIf="displayResults" [items]="items" [isSearched]="isSearched"></app-items-list-table>
+</body>
+

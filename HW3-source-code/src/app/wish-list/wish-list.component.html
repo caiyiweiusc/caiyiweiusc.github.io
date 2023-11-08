@@ -1,0 +1,48 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="container ml-6 mt-5">
+  <table *ngIf="items && items.length > 0; else noRecords" class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Shipping Cost</th>
+        <th>Wish List</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td><img [src]="item.imageURL" alt="{{ item.title }}" class="item-image img-fluid"></td>
+        <td class="item-title">{{ item.title }}</td>
+        <td class="item-price">$ {{ item.price }}</td>
+        <td class="item-shipping">{{ item.shippingCost }}</td>
+        <td>
+          <div class="wishlist-icon-container" (click)="removeFromWishList(item.itemID)">
+            <span class="material-icons wishlist-icon icon-in-wishlist">
+              remove_shopping_cart
+            </span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 新增的总价格行 -->
+      <ng-container *ngIf="items.length > 0">
+        <tr class="total-price-row">
+          <!-- Total Shopping 跨越到第四列 -->
+          <td colspan="4">Total Shopping</td>
+          <!-- 总价现在位于第五列，与 Wish List 列对齐 -->
+          <td class="total-price">$ {{ getTotalPrice() }}</td>
+          <td></td> <!-- 这里是第六列，对应 Wish List 的操作列，应保持为空 -->
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <ng-template #noRecords class="mt-1">
+    <app-no-records></app-no-records>
+  </ng-template>
+  
+</div>
+

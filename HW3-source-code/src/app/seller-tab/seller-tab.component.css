@@ -1,0 +1,72 @@
+/* 移除自定义表格的边框 */
+.custom-table {
+  border: none;
+}
+
+.custom-table th, .custom-table td {
+ border: none;
+}
+
+.odd-row {
+  background-color: #2c2c2c;  /* 深灰色 */
+  color: white;
+}
+
+.even-row {
+  background-color: #1f1f1f;  /* 黑色 */
+  color: #ffffff;  /* 白色文字 */
+}
+
+.green-icon {
+  color: green;
+}
+.red-icon {
+  color: red;
+}
+
+
+
+.yellow-star {
+  color: yellow;
+}
+.blue-star {
+  color: blue;
+}
+.turquoise-star {
+  color: turquoise;
+}
+.purple-star {
+  color: purple;
+}
+.red-star {
+  color: red;
+}
+.green-star {
+  color: green;
+}
+.silver-star {
+  color: silver;
+}
+
+.progress-container {
+  position: relative;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 8.5%;
+  transform: translate(-50%, -50%);
+  font-size: 14px; /* 或其他合适的大小 */
+}
+
+@media (max-width: 600px){
+  .container.mt-4{
+    margin-left: 3%;
+    margin-top: 40%;
+    width: 95%;
+  }
+
+}
+
+

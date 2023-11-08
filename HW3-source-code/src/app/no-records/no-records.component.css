@@ -1,0 +1,29 @@
+/* 在这里添加自定义样式 */
+.custom-alert {
+  background-color: #fcf8e3; /* 这是Bootstrap的alert-warning背景色 */
+  border: 0; /* 移除边框 */
+  padding: 0.75rem 1.25rem; /* Bootstrap默认的alert padding，如果你需要的话 */
+  margin: 0; /* 移除自定义警告框的外边距 */
+}
+
+.container-fluid {
+  padding-left: 0; /* 移除左侧内边距 */
+  padding-right: 0; /* 移除右侧内边距 */
+}
+
+.row {
+  margin-right: 0; /* 移除右侧外边距 */
+  margin-left: 0; /* 移除左侧外边距 */
+}
+
+.col-12 {
+  padding-right: 0; /* 移除列右侧内边距 */
+  padding-left: 0; /* 移除列左侧内边距 */
+}
+
+/* 针对不同屏幕尺寸的响应式样式 */
+@media (min-width: 768px) {
+  .custom-alert {
+    margin: 0; /* 确保在大屏幕上警告框没有外边距 */
+  }
+}

@@ -1,0 +1,22 @@
+runtime: nodejs20
+
+handlers:
+  - url: /
+    static_files: dist/571-hw3-app/index.html
+    upload: dist/571-hw3-app/index.html
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.*\.(gif|png|jpg|css|js|ico|json|txt|svg|woff|ttf|eot)(|\.map))$
+    static_files: dist/571-hw3-app/\1
+    upload: dist/571-hw3-app/.*\.(gif|png|jpg|css|js|ico|json|txt|svg|woff2?|ttf|eot)(|\.map)$
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /.*
+    script: auto
+    secure: always
+    redirect_http_response_code: 301
+
+
+    

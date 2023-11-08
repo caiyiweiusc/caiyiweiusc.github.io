@@ -1,0 +1,139 @@
+body {
+  background-color: #FFFFFF;
+}
+
+.searchwindow {
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+}
+.form-group {
+  width: 100%; /*或者使用您想要的百分比或具体的px值*/
+  margin-left: 20%;
+}
+.product-title{
+  margin-left: 21%;
+}
+
+
+.searchwindow, .searchwindow label, .searchwindow .label-text, .searchwindow h1 {
+  color: #FFFFFF;
+}
+
+.label-text-distance{
+ font-size: 13px;
+ margin-right: -40px;
+}
+
+/* 设置复选框及其旁边文本的字体大小 */
+.form-field div {
+    font-size: 13px;
+}
+
+.label-text{
+  font-size: 13px;
+  margin-right: 50px;  /* 调整为你想要的值 */
+}
+.checkbox-label {
+ margin-top: 10px;
+ margin-right: 15px;  /* 调整为你希望的间距 */
+}
+
+.required-star {
+  color: red;
+}
+
+.example-input {
+  color: grey;
+}
+
+/*设置search button区域*/
+.custom-btn.search-btn {
+  margin-right: 25px; /* 或你想要的任何其他值 */
+}
+
+
+.custom-btn {
+  background-color: #ddd; /* 灰色背景 */
+  border: none; /* 移除边框 */
+  color: black; /* 文字颜色 */
+}
+
+.custom-btn i {
+  margin-right: 5px; /* 图标和文字之间的间距 */
+}
+
+/* 被选中按钮的样式 */
+.btn-selected {
+  background-color: #000000; /* 黑色背景 */
+  color: #FFFFFF; /* 白色文字 */
+}
+
+
+/*边框红色效果*/
+.form-control.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn-selected {
+  background-color: #000; /* Black background */
+  color: #FFF; /* White text */
+}
+
+.progress{
+  width: 70%;
+  margin-left: 15%;
+  margin-top:5%
+}
+
+
+
+
+/* 响应式样式 */
+@media (max-width: 600px) {
+  .searchwindow{
+    margin-top: -20%;
+    width: 90%;
+  }
+  .product-title{
+    margin-left: -6%;
+  }
+  .form-field {
+    margin-left: -10%;
+  }
+  
+  .form-field label {
+    width: 100%;
+    margin-bottom: 0px;  /* 为了增加垂直间距 */
+  }
+
+  .checkbox-label {
+    margin-top: 3px;
+   }
+
+  .btn-search-clear {
+    margin-left: -10%;
+  }
+
+  .btn-search-clear, .custom-btn.search-btn {
+    margin-left: -33%;  /* 这里是新添加的样式 */
+  }
+
+  /* 针对复选框特定样式 */
+  .checkbox-label {
+    display: flex;
+  }
+  /* 按钮样式 */
+}
+
+
+
+
+

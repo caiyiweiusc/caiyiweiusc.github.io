@@ -1,0 +1,71 @@
+.container {
+  max-width: 80%;
+}
+
+.similar-item {
+  display: flex; /* 使用flexbox布局 */
+  gap: 20px; /* 设置图片和文字之间的间距 */
+  align-items: center; /* 垂直居中内容 */
+  justify-content: space-between; /* 在图片和描述之间添加等量的间隔 */
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #222429;
+  color: white;
+}
+
+.item-details {
+  font-size: 12px;
+  margin-top: -5%;
+  flex-grow: 1;
+}
+
+
+.item-image {
+  width: 150px;  /* 图片固定宽度 */
+  height: 150px; /* 图片固定高度 */
+  object-fit: cover; /* 图片始终保持其纵横比 */
+  border-radius: 5px; /* 如果你想要图片有圆角 */
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column; /* 垂直排列内容 */
+}
+
+.item-title, 
+.item-price, 
+.item-shipping-cost, 
+.item-days-left {
+ margin-left: 0%;
+}
+
+.item-title {
+  color: #6E979A;
+}
+.item-price {
+  color: #AADD9C;
+}
+.item-shipping-cost {
+  color: #c8aa15; 
+}
+.item-days-left {
+  color: white;
+}
+
+/* 新增按钮样式 */
+.btn-custom {
+  background-color: #000; /* 黑底 */
+  color: #fff; /* 白字 */
+  border: none; /* 无边框 */
+  padding: 10px 20px; /* 内填充 */
+  cursor: pointer; /* 鼠标手势 */
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
+}
+
+/* 按钮居中 */
+.text-center {
+  text-align: center;
+}
+

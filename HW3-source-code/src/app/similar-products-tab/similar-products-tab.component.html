@@ -1,0 +1,56 @@
+<div *ngIf="sortedItems?.length; else noSimilarItemsTemplate" class="container">
+  
+
+  <section class="similar-items-container">
+    <section class="sorting-controls mb-3">
+      <label>
+        <select [(ngModel)]="selectedSortField" (change)="sortItems()" class="form-select mr-2">
+          <option value="default">Default</option>
+          <option value="productName">Product Name</option>
+          <option value="daysLeft">Days Left</option>
+          <option value="price">Price</option>
+          <option value="shippingCost">Shipping Cost</option>
+        </select>
+      </label>
+  
+      <label>
+        <select [(ngModel)]="sortDirection" (change)="sortItems()" class="form-select mr-2" [disabled]="selectedSortField === 'default'">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
+    </section>
+    <article *ngFor="let item of sortedItems" class="similar-item mb-3">
+      <figure>
+        <img [src]="item.imageUrl" alt="{{item.productName}}" class="item-image mb-2 rounded">
+      </figure>
+
+      <div class="item-details">
+        <p class="item-title mb-1">
+          {{ item.productName }}
+        </p>
+        <p class="item-price mb-1">
+          <strong>Price:</strong> {{ item.price }}
+        </p>
+        <p class="item-shipping-cost mb-1">
+          <strong>Shipping Cost:</strong> {{ item.shippingCost }}
+        </p>
+        <p class="item-days-left mb-1">
+          <strong>Days Left:</strong> {{ item.daysLeft }}
+        </p>
+      </div>
+
+    </article>
+      <!-- Show More/Show Less按钮 -->
+      <div class="text-center">
+        <button class="btn-custom" (click)="toggleShowMore()">
+          {{ isShowMore ? 'Show Less' : 'Show More' }}
+        </button>
+      </div>
+  </section>
+
+</div>
+
+<ng-template #noSimilarItemsTemplate>
+  <p>No similar items found.</p>
+</ng-template>
